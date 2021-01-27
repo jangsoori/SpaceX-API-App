@@ -7,7 +7,7 @@ export default function GlobalStyle() {
     <Global
       styles={css`
         html {
-          font-family: "Rajdhani", sans-serif;
+          font-family: "Rajdhani";
         }
       `}
     />

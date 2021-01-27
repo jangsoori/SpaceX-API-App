@@ -15,7 +15,7 @@ const Logo = styled.div``;
 const Menu = styled.div`
   color: white;
   display: grid;
-  grid-template-rows: repeat(6, 1fr);
+  grid-template-rows: repeat(6, max-content);
   gap: 1rem;
   position: fixed;
   top: 0;
@@ -38,6 +38,7 @@ const Menu = styled.div`
 const MenuItem = styled.div`
   padding: 1rem;
   font-size: 2rem;
+  display: grid;
 `;
 const Dropdown = styled.div`
   display: grid;
@@ -46,7 +47,9 @@ const Dropdown = styled.div`
   column-gap: 1rem;
 `;
 const DropdownContent = styled.div`
-  display: none;
+  display: grid;
+  grid-auto-flow: row;
+  justify-self: center;
 `;
 
 const Hamburger = styled.div`
@@ -124,7 +127,7 @@ export default function Navbar() {
         <span></span>
       </Hamburger>
 
-      <Menu mobileOpen={mobileOpen}>
+      <Menu mobileOpen={true}>
         <MenuItem>About</MenuItem>
         <MenuItem>Missions</MenuItem>
         <MenuItem>

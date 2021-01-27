@@ -3,7 +3,7 @@ import "../styles/reset.css";
 function MyApp({ Component, pageProps }) {
   return (
     <>
-      <GlobalStyle />
+      {/* <GlobalStyle /> */}
       <Component {...pageProps} />
     </>
   );
