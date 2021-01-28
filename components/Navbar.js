@@ -3,7 +3,7 @@ import React from "react";
 import { FaChevronDown } from "react-icons/fa";
 import Link from "next/link";
 import Image from "next/image";
-import { css } from "@emotion/react";
+import { css, jsx } from "@emotion/react";
 const StyledNavbar = styled.nav`
   display: flex;
   justify-content: space-between;
@@ -15,12 +15,13 @@ const Logo = styled.div``;
 const Menu = styled.div`
   color: white;
   display: grid;
-  grid-template-rows: repeat(6, max-content);
-  gap: 1rem;
+  grid-auto-flow: row;
+  align-items: center;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
+  height: 100%;
   background: rgba(0, 0, 0, 0.8);
   justify-content: center;
   text-align: center;
@@ -36,20 +37,24 @@ const Menu = styled.div`
     `}
 `;
 const MenuItem = styled.div`
-  padding: 1rem;
   font-size: 2rem;
   display: grid;
 `;
 const Dropdown = styled.div`
   display: grid;
-  grid-template-columns: 1fr auto;
+  grid-template-rows: 1fr auto;
   align-items: center;
   column-gap: 1rem;
+  justify-items: center;
+  row-gap: 0.5rem;
 `;
 const DropdownContent = styled.div`
+  font-size: 1.4rem;
   display: grid;
   grid-auto-flow: row;
   justify-self: center;
+  row-gap: 1rem;
+  text-align: left;
 `;
 
 const Hamburger = styled.div`
@@ -61,6 +66,8 @@ const Hamburger = styled.div`
   width: 6rem;
 
   span {
+    backface-visibility: hidden;
+
     position: absolute;
     right: 50%;
     top: 50%;
@@ -106,9 +113,36 @@ const Hamburger = styled.div`
       `}
   }
 `;
+
+const Arrow = styled(FaChevronDown)`
+  cursor: pointer;
+  display: none;
+`;
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = React.useState(false);
-  console.log(mobileOpen);
+  const [dropdownOpen, setDropdownOpen] = React.useState(false);
+
+  const dropdownContent = [
+    "capsules",
+    "cores",
+    "dragons",
+    "landpads",
+    "launches",
+    "payloads",
+    "fairings",
+    "rockets",
+    "ship",
+  ];
+  const renderDropdown = () => {
+    return dropdownContent.map((item) => {
+      return (
+        <Link href={`/${item}`}>
+          <a>{item}</a>
+        </Link>
+      );
+    });
+  };
+
   return (
     <StyledNavbar>
       <Logo>
@@ -127,34 +161,47 @@ export default function Navbar() {
         <span></span>
       </Hamburger>
 
-      <Menu mobileOpen={true}>
-        <MenuItem>About</MenuItem>
-        <MenuItem>Missions</MenuItem>
+      <Menu mobileOpen={mobileOpen}>
         <MenuItem>
-          <Dropdown>
+          <Link href="/about">
+            <a>About</a>
+          </Link>
+        </MenuItem>
+        <MenuItem>
+          <Link href="/missions">
+            <a>Missions</a>
+          </Link>
+        </MenuItem>
+        <MenuItem>
+          <Dropdown open={dropdownOpen}>
             <Link href="/equipment">
               <a>Equipment</a>
             </Link>
-            <FaChevronDown />
-            <DropdownContent>
-              <Link href="/equipment">
-                <a>Capsules</a>
-              </Link>{" "}
-              <Link href="/equipment">
-                <a>Cores</a>
-              </Link>{" "}
-              <Link href="/equipment">
-                <a>Dragons</a>
-              </Link>{" "}
-              <Link href="/equipment">
-                <a>Landpads</a>
-              </Link>
+            <Arrow
+              onClick={() => {
+                setDropdownOpen(!dropdownOpen);
+              }}
+            />
+            <DropdownContent open={dropdownOpen}>
+              {renderDropdown()}
             </DropdownContent>
           </Dropdown>
         </MenuItem>
-        <MenuItem>Timeline</MenuItem>
-        <MenuItem>Crew</MenuItem>
-        <MenuItem>Starlink</MenuItem>
+        <MenuItem>
+          <Link href="/timeline">
+            <a>Timeline</a>
+          </Link>
+        </MenuItem>
+        <MenuItem>
+          <Link href="/crew">
+            <a>Crew</a>
+          </Link>
+        </MenuItem>
+        <MenuItem>
+          <Link href="/starlink">
+            <a>Starlink</a>
+          </Link>
+        </MenuItem>
       </Menu>
     </StyledNavbar>
   );
