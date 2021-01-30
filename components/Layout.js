@@ -7,6 +7,9 @@ const StyledLayout = styled.div`
   background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)),
     url("/background.jpg") no-repeat bottom center / cover;
   padding: 1rem;
+  display: grid;
+  grid-template-rows: auto 1fr;
+  row-gap: 2rem;
 `;
 
 export default function Layout({ children }) {
