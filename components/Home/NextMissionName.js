@@ -7,26 +7,26 @@ const StyledHero = styled.div`
 const NextMission = styled.div`
   display: grid;
   grid-template-rows: auto;
-  row-gap: 0.4rem;
+  row-gap: 0rem;
   text-transform: uppercase;
   color: white;
 `;
 
-const Title = styled.h2`
-  font-size: 1.8rem;
-`;
-const MissionName = styled.h3`
+const Title = styled.p`
   font-size: 2.4rem;
+`;
+const MissionName = styled.p`
+  font-size: 3.5rem;
   font-weight: 500;
 `;
 const DetailsButton = styled.button`
   font: inherit;
-  font-size: 1.4rem;
-  font-weight: 600;
+  font-size: 1.8rem;
+  font-weight: 400;
   text-transform: uppercase;
   justify-self: start;
-  padding: 0.75rem 1rem;
-  border: 2px solid white;
+  padding: 0.5rem 1rem;
+  border: 1px solid white;
   background: none;
   color: white;
   cursor: pointer;
@@ -44,7 +44,7 @@ export default function Hero({ launchName, setOpenDetails, openDetails }) {
         <Title>Next Launch</Title>
         <MissionName>{launchName}</MissionName>
         <DetailsButton onClick={() => setOpenDetails(!openDetails)}>
-          {openDetails ? "close" : "details"}
+          {openDetails ? "close details" : "show details"}
         </DetailsButton>
       </NextMission>
     </StyledHero>

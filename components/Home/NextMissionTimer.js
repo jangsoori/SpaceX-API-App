@@ -4,7 +4,7 @@ import styled from "@emotion/styled";
 import Countdown from "react-countdown";
 
 const StyledNextMissionTimer = styled.div`
-  margin-top: 5rem;
+  margin-top: 1.5rem;
   display: grid;
   color: white;
   justify-items: center;

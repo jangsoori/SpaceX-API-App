@@ -16,7 +16,7 @@ export default function HomePage({ nextLaunch }) {
         launchName={nextLaunch?.name}
       />
       <NextMissionTimer launchDate={nextLaunch?.date_utc} />
-      <NextMissionDetails openDetails={openDetails} />
+      <NextMissionDetails details={nextLaunch} openDetails={openDetails} />
     </StyledHomePage>
   );
 }
