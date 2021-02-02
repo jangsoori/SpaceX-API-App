@@ -7,6 +7,8 @@ const Wrapper = styled.div`
   border-radius: 2px;
   margin-top: 2rem;
   padding: 1rem;
+  justify-self: left;
+  width: 100%;
 `;
 
 const Title = styled.h3`

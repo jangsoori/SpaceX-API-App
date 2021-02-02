@@ -7,8 +7,7 @@ const StyledNextMissionTimer = styled.div`
   margin-top: 1.5rem;
   display: grid;
   color: white;
-  justify-items: center;
-  justify-content: center;
+  justify-content: flex-start;
   text-align: center;
 `;
 const NumberWrapper = styled.div`
