@@ -56,7 +56,7 @@ export default function NextMissionDetails({ openDetails, details }) {
 
   return (
     <div style={{ color: "white" }}>
-      {(openDetails || !openDetails) && (
+      {openDetails && (
         <Wrapper>
           <Title>{name}</Title>
           <Desc>{desc}</Desc>
