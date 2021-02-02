@@ -9,7 +9,7 @@ const StyledLayout = styled.div`
   padding: 1rem;
   display: grid;
   grid-template-rows: auto 1fr;
-  row-gap: 2rem;
+  row-gap: 1rem;
 `;
 
 export default function Layout({ children }) {
