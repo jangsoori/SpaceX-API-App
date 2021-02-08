@@ -1,7 +1,6 @@
 import styled from "@emotion/styled";
 import dayjs from "dayjs";
 import React from "react";
-import useGetEquipment from "../../hooks/useGetEquipment";
 
 const StyledMissionsTable = styled.div`
   /* padding: 0.5rem; */
