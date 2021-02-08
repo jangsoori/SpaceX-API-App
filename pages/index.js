@@ -1,9 +1,7 @@
 import Layout from "../components/Layout";
-import useFetch from "../hooks/useFetch";
 import React from "react";
 import HomePage from "../components/Home/HomePage";
-import { QueryClient, QueryClientProvider, useQuery } from "react-query";
-import { ReactQueryDevtools } from "react-query/devtools";
+import { useQuery } from "react-query";
 
 export default function Home() {
   const { isLoading, error, data, isFetching } = useQuery("nextMission", () =>
