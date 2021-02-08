@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import React from "react";
 import dayjs from "dayjs";
-import useFetch from "../../hooks/useFetch";
+import { useQuery } from "react-query";
 const Wrapper = styled.div`
   background-color: rgba(1, 2, 20, 0.32);
   border-radius: 2px;
@@ -42,18 +42,28 @@ export default function NextMissionDetails({ openDetails, details }) {
   if (!details) {
     return null;
   }
-  const { response: launchpad } = useFetch(
-    `https://api.spacexdata.com/v4/launchpads/${details.launchpad}`
+
+  const { data: launchpad } = useQuery("launchpad", () =>
+    fetch(
+      `https://api.spacexdata.com/v4/launchpads/${details.launchpad}`
+    ).then((res) => res.json())
   );
-  const { response: payload } = useFetch(
-    `https://api.spacexdata.com/v4/payloads/${details.payloads[0]}`
+  const { data: payload } = useQuery("payload", () =>
+    fetch(
+      `https://api.spacexdata.com/v4/payloads/${details.payloads[0]}`
+    ).then((res) => res.json())
   );
-  const { response: rocket } = useFetch(
-    `https://api.spacexdata.com/v4/rockets/${details.rocket}`
+  const { data: rocket } = useQuery("rocket", () =>
+    fetch(
+      `https://api.spacexdata.com/v4/rockets/${details.rocket}`
+    ).then((res) => res.json())
   );
-  const { response: core } = useFetch(
-    `https://api.spacexdata.com/v4/cores/${details.cores[0].core}`
+  const { data: core } = useQuery("core", () =>
+    fetch(
+      `https://api.spacexdata.com/v4/cores/${details.cores[0].core}`
+    ).then((res) => res.json())
   );
+
   const { name, details: desc, date_utc, flight_number } = details;
 
   return (
