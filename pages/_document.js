@@ -1,5 +1,5 @@
 import Document, { Html, Head, Main, NextScript } from "next/document";
-
+import GoogleFonts from "next-google-fonts";
 class MyDocument extends Document {
   static async getInitialProps(ctx) {
     const initialProps = await Document.getInitialProps(ctx);
@@ -9,12 +9,14 @@ class MyDocument extends Document {
   render() {
     return (
       <Html>
+        <GoogleFonts href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600&display=swap" />
         <Head>
-          <link rel="preconnect" href="https://fonts.gstatic.com" />
-          <link
-            href="https://fonts.googleapis.com/css2?family=Rajdhani:wght@300;400;500;600&display=swap"
-            rel="stylesheet"
+          <meta charSet="UTF-8" />
+          <meta
+            name="viewport"
+            content="width=device-width, initial-scale=1.0"
           />
+          <meta httpEquiv="x-ua-compatible" content="ie=edge" />
         </Head>
         <body>
           <Main />
