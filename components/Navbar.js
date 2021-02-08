@@ -17,18 +17,21 @@ const Menu = styled.div`
   display: grid;
   grid-auto-flow: row;
   align-items: center;
+  align-content: center;
+  row-gap: 2rem;
   position: fixed;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: rgba(0, 0, 0, 0.8);
+  background: rgba(0, 0, 0, 0.9);
   justify-content: center;
   text-align: center;
   text-transform: uppercase;
   padding: 2rem 0;
   opacity: 0;
   visibility: hidden;
+  transition: 0.2s all;
   ${({ mobileOpen }) =>
     mobileOpen &&
     css`
@@ -39,22 +42,6 @@ const Menu = styled.div`
 const MenuItem = styled.div`
   font-size: 2rem;
   display: grid;
-`;
-const Dropdown = styled.div`
-  display: grid;
-  grid-template-rows: 1fr auto;
-  align-items: center;
-  column-gap: 1rem;
-  justify-items: center;
-  row-gap: 0.5rem;
-`;
-const DropdownContent = styled.div`
-  font-size: 1.4rem;
-  display: grid;
-  grid-auto-flow: row;
-  justify-self: center;
-  row-gap: 1rem;
-  text-align: left;
 `;
 
 const Hamburger = styled.div`
@@ -120,35 +107,16 @@ const Arrow = styled(FaChevronDown)`
 `;
 export default function Navbar() {
   const [mobileOpen, setMobileOpen] = React.useState(false);
-  const [dropdownOpen, setDropdownOpen] = React.useState(false);
-
-  const dropdownContent = [
-    "capsules",
-    "cores",
-    "dragons",
-    "landpads",
-    "launches",
-    "payloads",
-    "fairings",
-    "rockets",
-    "ship",
-  ];
-  const renderDropdown = () => {
-    return dropdownContent.map((item) => {
-      return (
-        <Link href={`/${item}`}>
-          <a>{item}</a>
-        </Link>
-      );
-    });
-  };
 
   return (
     <StyledNavbar>
-      <Logo>
-        <Image src="/logo-mobile.png" width="100" height="40" />
-      </Logo>
-
+      <Link href="/">
+        <a>
+          <Logo>
+            <Image src="/logo-mobile.png" width="100" height="40" />
+          </Logo>
+        </a>
+      </Link>
       <Hamburger
         onClick={() => {
           setMobileOpen(!mobileOpen);
@@ -173,19 +141,9 @@ export default function Navbar() {
           </Link>
         </MenuItem>
         <MenuItem>
-          <Dropdown open={dropdownOpen}>
-            <Link href="/equipment">
-              <a>Equipment</a>
-            </Link>
-            <Arrow
-              onClick={() => {
-                setDropdownOpen(!dropdownOpen);
-              }}
-            />
-            <DropdownContent open={dropdownOpen}>
-              {renderDropdown()}
-            </DropdownContent>
-          </Dropdown>
+          <Link href="/equipment">
+            <a>Equipment</a>
+          </Link>
         </MenuItem>
         <MenuItem>
           <Link href="/timeline">
